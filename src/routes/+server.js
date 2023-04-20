@@ -19,7 +19,6 @@ export function POST({ request }) {
 			const subscribers = await pb.collection('notification_subscriptions').getFullList();
 
 			subscribers.forEach((sub) => {
-				console.log(sub.keys.keys.auth);
 				webpush.sendNotification(sub.keys, data.message).catch((err) => {
 					console.error(err);
 				});
