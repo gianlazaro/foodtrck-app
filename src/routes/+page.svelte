@@ -19,7 +19,7 @@
 						return subscription;
 					}
 
-					const res = await fetch('https://www.foodtrck.app');
+					const res = await fetch('/');
 					const applicationServerKey = await res.text();
 
 					return registration.pushManager.subscribe({
@@ -29,7 +29,7 @@
 				});
 			})
 			.then((subscription) => {
-				fetch('https://www.foodtrck.app', {
+				fetch('/', {
 					method: 'post',
 					headers: {
 						'Content-type': 'application/json'

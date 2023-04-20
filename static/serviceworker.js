@@ -15,7 +15,7 @@ self.addEventListener('activate', function (event) {
 			return subscription;
 		}
 
-		const res = await fetch('https://www.foodtrck.app');
+		const res = await fetch('/');
 		let applicationServerKey = await res.text();
 		applicationServerKey = urlB64ToUint8Array(applicationServerKey);
 
@@ -27,7 +27,7 @@ self.addEventListener('activate', function (event) {
 		console.log('SUB: ' + JSON.stringify(sub));
 		// save record to database by sending a post requeset
 
-		fetch('https://www.foodtrck.app/subscription', {
+		fetch('/subscription', {
 			method: 'POST',
 			body: JSON.stringify(sub),
 			headers: {
