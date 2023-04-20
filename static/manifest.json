@@ -1,0 +1,8 @@
+{
+	"short_name": "notification-test",
+	"name": "Notification test",
+	"start_url": "/",
+	"display": "standalone",
+	"scope": "/",
+	"description": "beta"
+}
