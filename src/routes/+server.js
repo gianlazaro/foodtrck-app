@@ -1,7 +1,7 @@
 import webpush from 'web-push';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('https://pb.foodtrck.app/');
+const pb = new PocketBase('https://pb.foodtrck.app');
 
 const { publicKey, privateKey } = webpush.generateVAPIDKeys();
 

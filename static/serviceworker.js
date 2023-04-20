@@ -15,7 +15,7 @@ self.addEventListener('activate', function (event) {
 			return subscription;
 		}
 
-		const res = await fetch('/');
+		const res = await fetch('https://www.foodtrck.app');
 		let applicationServerKey = await res.text();
 		applicationServerKey = urlB64ToUint8Array(applicationServerKey);
 
@@ -24,10 +24,9 @@ self.addEventListener('activate', function (event) {
 			applicationServerKey
 		});
 
-		console.log('SUB: ' + JSON.stringify(sub));
 		// save record to database by sending a post requeset
 
-		fetch('/subscription', {
+		fetch('https://www.foodtrck.app/subscription', {
 			method: 'POST',
 			body: JSON.stringify(sub),
 			headers: {
@@ -38,14 +37,6 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('push', function (event) {
-	// Keep the service worker alive until the notification is created.
-	// event.waitUntil(
-	// 	// Show a notification with title 'ServiceWorker Cookbook' and body 'Alea iacta est'.
-	// 	self.registration.showNotification('ServiceWorker Cookbook', {
-	// 		body: event.data.text()
-	// 	})
-	// );
-
 	if (event.data) {
 		console.log('sent: ' + event.data.text());
 
