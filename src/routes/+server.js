@@ -16,14 +16,20 @@ export function GET() {
 // pull all subscribers and send notifications
 export function POST({ request }) {
 	return new Response(
-		request.json().then(async (data) => {
-			const subscribers = await pb.collection('notification_subscriptions').getFullList();
+		request
+			.json()
+			.then(async (data) => {
+				const subscribers = await pb.collection('notification_subscriptions').getFullList();
 
-			subscribers.forEach((sub) => {
-				webpush.sendNotification(sub.keys, data.message).catch((err) => {
-					console.error(err);
+				subscribers.forEach((sub) => {
+					webpush.sendNotification(sub.keys, data.message).catch((err) => {
+						console.error(err);
+					});
 				});
-			});
-		})
+			})
+			.catch((err) => {
+				console.error(err);
+				console.log('Aborted: ' + err.isAbort);
+			})
 	);
 }
