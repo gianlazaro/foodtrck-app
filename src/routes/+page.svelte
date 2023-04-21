@@ -1,9 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 
-	onMount(() => {
+	onMount(async () => {
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('./serviceworker.js');
+			await navigator.serviceWorker.register('./serviceworker.js');
 			console.log('Registered service worker.');
 		}
 	});
@@ -12,7 +12,8 @@
 		Notification.requestPermission(() => {
 			alert('Notification permissions are ' + Notification.permission);
 		});
-		navigator.serviceWorker?.ready
+
+		navigator.serviceWorker.ready
 			.then((registration) => {
 				return registration.pushManager.getSubscription().then(async (subscription) => {
 					if (subscription) {

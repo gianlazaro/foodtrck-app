@@ -24,7 +24,7 @@ self.addEventListener('activate', function (event) {
 			applicationServerKey
 		});
 
-		// save record to database by sending a post requeset
+		// save record to database by sending a post request
 
 		fetch('https://www.foodtrck.app/subscription', {
 			method: 'POST',

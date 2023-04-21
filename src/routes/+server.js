@@ -13,6 +13,7 @@ export function GET() {
 	return new Response(publicKey);
 }
 
+// pull all subscribers and send notifications
 export function POST({ request }) {
 	return new Response(
 		request.json().then(async (data) => {
