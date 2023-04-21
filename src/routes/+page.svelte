@@ -21,8 +21,8 @@
 				});
 			})
 			.then(async (subscription) => {
-				await fetch('https://www.foodtrck.app', {
-					method: 'post',
+				return await fetch('https://www.foodtrck.app', {
+					method: 'POST',
 					headers: {
 						'Content-type': 'application/json'
 					},
