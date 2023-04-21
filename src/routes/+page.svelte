@@ -20,8 +20,8 @@
 					});
 				});
 			})
-			.then((subscription) => {
-				fetch('https://www.foodtrck.app', {
+			.then(async (subscription) => {
+				await fetch('https://www.foodtrck.app', {
 					method: 'post',
 					headers: {
 						'Content-type': 'application/json'
